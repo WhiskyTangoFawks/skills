@@ -27,4 +27,14 @@ Each round the user answers reshapes the tree: settled decisions push the fronti
 
 Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
 
-The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.
+Hold the conversation to the domain:
+
+- A term that clashes with the repo's `GLOSSARY.md`: call it out at once, quoting the entry.
+- A vague or overloaded term: ask which concept the user means.
+- A relationship between concepts: test it with a concrete scenario at its edge.
+- A claim about how the system works: check the code, and surface a contradiction.
+
+The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Close with a **handoff**. The user's confirmation of it ends the session.
+
+- Every decision, numbered, with where it lands. Read where the repo says decisions land first: in a repo with `spec/`, that is `spec/CLAUDE.md`. Land each decision by the test in its destination folder's CLAUDE.md.
+- The next steps, and the decisions each takes.
